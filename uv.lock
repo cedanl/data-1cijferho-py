@@ -557,6 +557,7 @@ dependencies = [
     { name = "numpy" },
     { name = "pandas" },
     { name = "polars" },
+    { name = "rich" },
     { name = "streamlit" },
 ]
 
@@ -566,6 +567,7 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.2.2" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "polars", specifier = ">=1.21.0" },
+    { name = "rich", specifier = ">=13.9.4" },
     { name = "streamlit", specifier = ">=1.41.1" },
 ]
 
