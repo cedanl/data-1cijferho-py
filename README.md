@@ -1,5 +1,5 @@
 <p align="center"><img src="src/assets/npuls_logo.png" alt="CEDA"></p>
-<h1 align="center">Npuls-CEDA | Data-1chijfer-py</h1>
+<h1 align="center">Npuls-CEDA | data-1cijferho-py</h1>
 
 <div align="center"> <strong>🚀 1 Cijfer HO Data Transformation Tool 🛠️</strong>
     <br> Python project for processing raw 1 Cijfer HO data from Dutch higher education institutions. 
