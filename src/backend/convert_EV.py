@@ -12,8 +12,8 @@ from rich import print as rprint
 ################################################################
 # YOU CAN EDIT PATHS BELOW - PLEASE DO NOT ADJUST ANY OTHER FUNCTIONS
 file_path = "/data/01-raw/DUO/1CHO/2025/EV27UM25.021"
-path_mapping_1cho = "/data/01-raw/DUO/1CHO/2025/bb_test.csv"
-csv_cho1 = "/data/01-raw/DUO/1CHO/2025/EV27UM25.csv"
+mapping_1cho_path = "/data/01-raw/DUO/1CHO/2025/bb_test.csv"
+output_path = "/data/01-raw/DUO/1CHO/2025/EV27UM25.csv"
 
 ################################################################
 #                       COMPUTER MAGIC                          
@@ -59,12 +59,12 @@ def convert_fwf_to_csv(input_file: str, output_file: str, widths: list, column_n
 start_time = time.time()
 
 # Read mapping file using polars
-mapping_df = pl.read_csv(path_mapping_1cho)
+mapping_df = pl.read_csv(mapping_1cho_path)
 widths = mapping_df["Aantal_Posities"].to_list()
 column_names = mapping_df["Naam"].to_list()
 
 # Convert the file
-convert_fwf_to_csv(file_path, csv_cho1, widths, column_names)
+convert_fwf_to_csv(file_path, output_path, widths, column_names)
 
 end_time = time.time()
 rprint(f"[bold blue]Total Duration:[/bold blue] {end_time - start_time:.2f} seconds")
