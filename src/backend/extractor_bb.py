@@ -7,8 +7,9 @@ from pathlib import Path
 #                            PATHS                           
 ################################################################
 
-# YOU CAN EDIT PATH BELOW - PLEASE DO NOT ADJUST ANY OTHER FUNCTIONS
+# YOU CAN EDIT PATHS BELOW - PLEASE DO NOT ADJUST ANY OTHER FUNCTIONS
 file_path = "~/data/01-raw/DUO/1CHO/2025/Bestandsbeschrijving_1cyferho_2024_v1.1.txt"
+output_path = "~/data/01-raw/DUO/1CHO/2025/bb_test.csv'"
 
 ################################################################
 #                          EXTRACT                          
@@ -134,3 +135,8 @@ data['ID'] = 'V' + data['ID'].astype(str)
 ## PRINT CHECK
 ##---------------------
 print(data)
+
+##---------------------
+## TEST - EXPORT TO CSV
+##---------------------
+data.to_csv(output_path, index=False)
