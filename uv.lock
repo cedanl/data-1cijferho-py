@@ -554,6 +554,8 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "fastexcel" },
+    { name = "numpy" },
+    { name = "pandas" },
     { name = "polars" },
     { name = "streamlit" },
 ]
@@ -561,6 +563,8 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "fastexcel", specifier = ">=0.12.1" },
+    { name = "numpy", specifier = ">=2.2.2" },
+    { name = "pandas", specifier = ">=2.2.3" },
     { name = "polars", specifier = ">=1.21.0" },
     { name = "streamlit", specifier = ">=1.41.1" },
 ]
