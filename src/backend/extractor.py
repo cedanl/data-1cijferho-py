@@ -103,8 +103,6 @@ def extract_tables(file_path):
     
     return tables
 
-tables = extract_tables("C:/Users/asewnandan/De Haagse Hogeschool/Fileserver Studiedata_groups - General/data/01-raw/DUO/1CHO/2025/Bestandsbeschrijving_1cyferho_2024_v1.1.txt")
-
 # Now you can access each table by its variable name
 # For example:
 # Just print table names and their dimensions
