@@ -96,3 +96,4 @@ def find_tables_from_file(file_path):
         print(f"\nSaved all {tables_found} tables to {json_path}")
     else:
         print(f"\nNo tables found in {file_path}")
+
