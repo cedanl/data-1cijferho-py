@@ -1,115 +1,98 @@
-################################################################
-#                           EXTRACTOR                           
-################################################################
-def extract_tables(file_path):
-    """
-    Extract tables from a file with consistent formatting.
-    Handles different file encodings.
-    
-    Args:
-        file_path: Path to the text file
-        
-    Returns:
-        Dictionary of DataFrames with table names prefixed with "bb_"
-    """
-    import pandas as pd
-    
-    # Try different encodings
-    encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
-    
-    for encoding in encodings:
-        try:
-            with open(file_path, 'r', encoding=encoding) as file:
-                lines = file.readlines()
-            break  # If successful, exit the loop
-        except UnicodeDecodeError:
-            if encoding == encodings[-1]:  # If this was the last encoding to try
-                raise Exception(f"Could not decode the file with any of these encodings: {encodings}")
-            continue
-    
-    tables = {}
-    i = 0
-    
-    while i < len(lines):
-        line = lines[i].strip()
-        
-        # Check if this is a table title (ends with .asc and followed by equals signs)
-        if line.endswith('.asc') and i + 1 < len(lines) and '===' in lines[i + 1]:
-            table_name = line
-            var_name = f"bb_{table_name}"
-            
-            # Skip title and equals line
-            i += 2
-            
-            # Skip blank lines before header
-            while i < len(lines) and not lines[i].strip():
-                i += 1
-            
-            # Skip the header line
-            if i < len(lines) and "Startpositie" in lines[i] and "Aantal posities" in lines[i]:
-                i += 1
-            
-            # Collect data rows
-            data = []
-            while i < len(lines) and lines[i].strip():
-                line_text = lines[i].strip()
-                parts = line_text.split()
-                
-                if len(parts) >= 2 and parts[-2].isdigit():
-                    # Check if the length part is a digit
-                    length_part = parts[-1]
-                    if length_part.isdigit():
-                        # Simple case: no extra info
-                        field_name = ' '.join(parts[:-2])
-                        start_pos = int(parts[-2])
-                        length = int(length_part)
-                        extra = ""
-                    else:
-                        # There's a digit followed by something
-                        digit_part = ""
-                        for char in length_part:
-                            if char.isdigit():
-                                digit_part += char
-                            else:
-                                break
-                                
-                        if digit_part:
-                            # We found digits at the start
-                            field_name = ' '.join(parts[:-2])
-                            start_pos = int(parts[-2])
-                            length = int(digit_part)
-                            
-                            # Get everything after the numbers in the line
-                            pos_after_length = line_text.find(length_part) + len(digit_part)
-                            extra = line_text[pos_after_length:].strip()
-                        else:
-                            # Skip this line if we can't parse it
-                            i += 1
-                            continue
-                    
-                    data.append({
-                        'Naam': field_name,
-                        'startpositie': start_pos,
-                        'aantal_posities': length,
-                        'extra': extra
-                    })
-                i += 1
-            
-            # Create DataFrame for this table
-            if data:
-                tables[var_name] = pd.DataFrame(data)
-        else:
-            i += 1
-    
-    return tables
+import os
+import json
+import re
 
-# Now you can access each table by its variable name
-# For example:
-# Just print table names and their dimensions
-# Assuming your tables are stored in a variable called 'tables'
-for table_name, df in tables.items():
-    print(f"\n{'-'*50}")
-    print(f"Table: {table_name}")
-    print(f"{'-'*50}")
-    print(df)
-    print(f"{'-'*50}\n")
+def find_tables_from_file(file_path):
+    # Read the file content
+    try:
+        with open(file_path, 'r', encoding='latin-1') as file:
+            text = file.read()
+    except FileNotFoundError:
+        print(f"Error: File not found at {file_path}")
+        return
+    except Exception as e:
+        print(f"Error reading file: {e}")
+        return
+    
+    # Ensure data directory exists
+    data_dir = os.path.join(os.getcwd(), 'data')
+    os.makedirs(data_dir, exist_ok=True)
+    
+    # Get the base filename without extension
+    base_filename = os.path.splitext(os.path.basename(file_path))[0]
+    
+    # Process the text to find tables
+    lines = text.split('\n')
+    found = False
+    table_title = ""
+    table_content = []
+    tables_found = 0
+    all_tables = []
+    
+    for i, line in enumerate(lines):
+        # Check for table header
+        if "startpositie" in line.lower() and not found:
+            found = True
+            tables_found += 1
+            table_content = [line]  # Start collecting table content
+            
+            # Look backwards to find the title
+            title_found = False
+            for j in range(i-1, max(0, i-10), -1):  # Look at up to 10 lines above
+                if lines[j].strip().startswith('=='):
+                    # Title is the line above the === line
+                    if j > 0 and lines[j-1].strip():
+                        table_title = lines[j-1].strip()
+                        title_found = True
+                        break
+            
+            if not title_found:
+                table_title = f"untitled_table_{tables_found}"
+                
+            print(f"\nFound Table {tables_found}: {table_title}")
+        
+        # Collect table content
+        elif found:
+            if not line.strip():
+                found = False
+                
+                # Add the table to our collection
+                table_data = {
+                    "table_number": tables_found,
+                    "table_title": table_title,
+                    "content": table_content
+                }
+                
+                all_tables.append(table_data)
+                table_content = []
+                continue
+            
+            print(line)
+            table_content.append(line)
+    
+    # Check if the last table extends to the end of the file
+    if found and table_content:
+        table_data = {
+            "table_number": tables_found,
+            "table_title": table_title,
+            "content": table_content
+        }
+        
+        all_tables.append(table_data)
+    
+    # Save all tables to a single JSON file
+    if all_tables:
+        file_data = {
+            "filename": base_filename,
+            "tables": all_tables
+        }
+        
+        json_filename = f"{base_filename}.json"
+        json_path = os.path.join(data_dir, json_filename)
+        
+        with open(json_path, 'w', encoding='latin-1') as json_file:
+            json.dump(file_data, json_file, indent=2, ensure_ascii=False)
+        
+        print(f"\nSaved all {tables_found} tables to {json_path}")
+    else:
+        print(f"\nNo tables found in {file_path}")
