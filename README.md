@@ -95,10 +95,6 @@ If you find this project helpful, please consider:
 ## 🫂 Contributors
 Thank you to all the [people](https://github.com/cedanl/data-1cijferho-py/graphs/contributors) who have already contributed to data-1cijferho-py.
 
-This project is made possible by:
-- [CEDA & Npuls](https://community-data-ai.npuls.nl/groups/view/44d20066-53a8-48c2-b4e9-be348e05d273/project-center-for-educational-data-analytics-ceda)
-- Our amazing [contributors](https://github.com/cedanl/data-1cijferho-py/graphs/contributors):
-
 [![](https://github.com/asewnandan.png?size=50)](https://github.com/asewnandan)
 [![](https://github.com/tin900.png?size=50)](https://github.com/tin900)
 
