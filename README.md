@@ -1,158 +1,102 @@
-<p align="center"><img src="src/assets/npuls_logo.png" alt="CEDA"></p>
-<h1 align="center">Npuls-CEDA | data-1cijferho-py</h1>
-
-<div align="center"> <strong>🚀 1 Cijfer HO Data Transformation Tool 🛠️</strong>
-    <br> Python project for processing raw 1 Cijfer HO data from Dutch higher education institutions. 
-    <br>
-    <sub>Ideal for data analysts, researchers, and education professionals working with DUO datasets</sub> </div> 
-
-<br>
+![Braille fonts](https://see.fontimg.com/api/rf5/DOeDd/MGE4NTM1Njg3NjZhNDZhZTgwNTE0MjE5YzUxMzA0OTgudHRm/VEVYVCBBTkFMWVNJUw/braille-cc0.png?r=dw&h=81&w=1250&fg=00B17E&bg=000000&s=65)
 
 <div align="center">
-  <h3>
-    <a href="https://community-data-ai.npuls.nl/groups/view/44d20066-53a8-48c2-b4e9-be348e05d273/project-center-for-educational-data-analytics-ceda">
-      Website
-    </a>
-    <span> | </span>
-    <a href="https://github.com/cedanl/data-1chijfer-py#features">
-      Features
-    </a>
-    <span> | </span>
-    <a href="https://github.com/cedanl/data-1chijfer-py#download-and-installation">
-      Downloads
-    </a>
-    <span> | </span>
-    <a href="https://github.com/cedanl/data-1chijfer-py#development">
-      Development
-    </a>
-    <span> | </span>
-    <a href="https://github.com/cedanl/data-1chijfer-py#contribution">
-      Contribution
-    </a>
-  </h3>
+  <h1>1 Cijfer HO Data Transformation Tool</h1>
+
+  <p>🔍 An advanced data transformation tool that makes understanding your 1 Cijfer HO data simple and intuitive.</p>
+
+  <p>
+    <a href="#"><img src="https://custom-icon-badges.demolab.com/badge/Windows-0078D6?logo=windows11&logoColor=white" alt="Windows"></a>
+    <a href="#"><img src="https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=F0F0F0" alt="macOS"></a>
+    <a href="#"><img src="https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black" alt="Linux"></a>
+    <img src="https://badgen.net/github/last-commit/cedanl/data-1cijferho-py" alt="GitHub Last Commit">
+    <img src="https://img.shields.io/github/license/cedanl/data-1cijferho-py" alt="GitHub License">
+  </p>
+
+  <p>🎬 Demo Video (Coming Soon!)</p>
 </div>
 
-<div align="center">
-  <sub>The ultimate 1 Cijfer HO data processing tool. Built with ❤︎ by
-    <a href="https://github.com/cedanl">CEDA</a> and
-    <a href="https://github.com/cedanl/data-1chijfer-py/graphs/contributors">
-      contributors
-    </a>
-    .
-  </sub>
-</div>
+## 🎯 What is 1 Cijfer HO Data Transformation Tool?
 
-<br />
+1 Cijfer HO Data Transformation Tool helps you understand patterns and insights in your 1 Cijfer HO data through:
+- 📊 Visual data representations
+- 🎯 Data validation and error reporting
+- 💭 Data transformation and processing
+- 📝 And more!
 
-# 🔍 Purpose
-This project is designed to transform raw 1 Cijfer HO (Een Cijfer Hoger Onderwijs) data from DUO (Dienst Uitvoering Onderwijs) for higher education institutions in the Netherlands. It processes ASCII files and decode files to produce structured, analyzable data.
+Perfect for analyzing:
+- 📋 1 Cijfer HO ASCII files
+- 🎤 Decode files
 
-## Key Features
+## 🚀 Quick Start Guide
 
-- 🚀 Efficient processing of 1 Cijfer HO ASCII files
-- 🔒 Secure handling of sensitive educational data
-- 🧪 Data validation and quality checks
-- 📦 Streamlined data transformation pipeline
-- 🐳 Docker containerization for consistent environments
-- 🚢 Easy deployment and scalability
-- 🔍 Comprehensive logging for data processing steps
+### 1. Download the App
+Choose one:
+- **Option A:** [Download ZIP](https://github.com/cedanl/data-1cijferho-py/archive/refs/heads/main.zip) and extract it
+- **Option B:** Use Github Desktop to clone `https://github.com/cedanl/data-1cijferho-py`
 
-## Demo
+### 2. Install UV (if not already installed)
+Copy and paste ONE of these commands based on your system:
 
-Check out the demo of the app in action:
-
-
-
-This GIF demonstrates the data transformation process and user interface of the Streamlit application.
-
-## Ideal For
-
-- Educational Researchers
-- Data Analysts in Higher Education
-- Policy Makers in Dutch Education Sector
-- IT Departments of Dutch Universities
-
-# 📁 Project Structure
-
-```
-├───data
-│   ├───input
-│   └───output
-├───src
-│   ├───assets
-│   ├───config
-│   ├───backend
-│   └───frontend
-│       ├───Files
-│       ├───Home
-│       └───Modules
-
+**Windows:**
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-
-## Directory Descriptions
-
-### 📂 data
-
-- input: Store raw 1 Cijfer HO ASCII files and decode files from DUO.
-- output: Save processed and transformed data ready for analysis.
-
-### 📂 src
-
-- assets: Contains static files like images and documentation.
-- config: Configuration files for data processing and application settings.
-- backend: Core logic for ASCII file parsing and data transformation.
-- frontend: Streamlit interface for data upload, processing, and visualization.
-  - Files: Components for handling 1 Cijfer HO file uploads.
-  - Home: Main dashboard for data processing status and results.
-  - Modules: Reusable components for data visualization and reporting.
-
-# 🌟 How to Use This Project
-
-## For CEDA Members
-
-1. Clone the repository
-2. Install dependencies using `uv`
-3. Configure environment variables for data paths
-4. Run the Streamlit app to start processing 1 Cijfer HO data
-
-## For External Contributors
-
-1. Fork the repository
-2. Set up a local development environment
-3. Contribute improvements to data processing algorithms or UI
-
-## Quick Start
-
-```
-git clone https://github.com/cedanl/data-1chijfer-py.git
-cd data-1chijfer-py
-tv run streamlit run src/main.py
-
+**Mac/Linux:**
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-# 🛠 Project Features
+### 3. Launch the App
+1. Open your terminal in the app folder
+2. Run this command:
+```bash
+uv run streamlit run src/main.py
+```
 
-- Automated parsing of 1 Cijfer HO ASCII files
-- Decoding of data using provided decode files
-- Data validation and error reporting
-- Streamlit interface for easy data upload and processing
-- Visualization of processed data and statistics
+That's it! The app will open in your browser. 🎉
 
-# 📋 Development Checklist
+## 💡 Using the App
 
-- [ ] Implement ASCII file parser
-- [ ] Develop decode file interpreter
-- [ ] Create data validation modules
-- [x] Build Streamlit interface for file upload and processing
-- [ ] Implement data visualization components
-- [ ] Set up automated testing for data processing accuracy
-- [ ] Add screenrecording of the app to the README
+1. **Upload Your Data**
+   - Drag and drop your files
 
-# 🤝 Contributing
-Please read CONTRIBUTING.md for details on our code of conduct and process for submitting pull requests.
+2. **Choose Analysis**
+   - Data transformation
+   - Data validation
 
-Thank you to all the people who have already contributed to data-1chijfer-py[[contributors](https://github.com/cedanl/data-1chijfer-py/graphs/contributors)].
+3. **Explore Results**
+   - Interactive visualizations
+   - Download reports
+   - Share insights
+
+> **Pro Tip**:
+> Check out our [architecture.md](architecture.md) for technical details!
+
+## 🛠️ Built With
+[![uv Badge](https://img.shields.io/badge/uv-DE5FE9?logo=uv&logoColor=fff&style=flat)](https://docs.astral.sh/uv/)
+[![Streamlit Badge](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=fff&style=flat)](https://streamlit.io/)
+[![Python Badge](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=flat)](https://www.python.org/)
+
+## 🤲 Support
+If you find this project helpful, please consider:
+- ⭐ Starring the repo
+- 🐛 Reporting bugs [Open an issue](https://github.com/cedanl/data-1cijferho-py/issues)
+- 💡 Suggesting features
+- 💻 Contributing code
+
+## 🙏 Acknowledgements
+<strong>Special thanks to:</strong>
+- [Bram Enning](https://github.com/enningb) for starting the project and laying the foundation.
+- [Ash Sewnandan](https://github.com/asewnandan) & [Tomer Iwan](https://github.com/Tomeriko96) for elevating the project to professional standards by creating a complete, user-friendly application with a polished interface and robust architecture.
+- [CEDA & Npuls](https://community-data-ai.npuls.nl/groups/view/44d20066-53a8-48c2-b4e9-be348e05d273/project-center-for-educational-data-analytics-ceda) for making this project possible by providing valuable resources and support.
+
+## 🫂 Contributors
+Thank you to all the [people](https://github.com/cedanl/data-1cijferho-py/graphs/contributors) who have already contributed to data-1cijferho-py.
 
 [![](https://github.com/asewnandan.png?size=50)](https://github.com/asewnandan)
 [![](https://github.com/tin900.png?size=50)](https://github.com/tin900)
+
+## 📄 License
+![GitHub License](https://img.shields.io/github/license/cedanl/data-1cijferho-py)
